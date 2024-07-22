@@ -11,5 +11,13 @@
             "email": "semyanskikh@gmail.com"
         }
     ],
-    "require": {}
+    "description": "hexlet first project",
+
+    "license": "MIT",
+
+    "require": {},
+
+    "bin": [
+          "bin/brain-games"
+    ]
 }
