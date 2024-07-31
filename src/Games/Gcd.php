@@ -4,38 +4,27 @@ namespace BrainGames\Games\Gcd;
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Games\Engine\engine;
 
 function runGcd()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line('Find the greatest common divisor of given numbers.');
+    
+    $description = 'Find the greatest common divisor of given numbers.';
+    
+    $questions = [];
+    $answers = [];
 
-    $i = 0;
-    while ($i <= 2) {
-
-        $num1 = (string)(rand(1, 25)); // генерируем первое случайное число от 1 до 25
-        $num2 = (string)(rand(1, 25)); // генерируем второе случайное число от 1 до 25
+    for ($i = 0; $i < 3; $i++) {
+        $num1 = rand(1, 25); // генерируем первое случайное число от 1 до 25
+        $num2 = rand(1, 25); // генерируем второе случайное число от 1 до 25
         
-        $question = "{$num1} {$num2}"; // формируем вопрос игры
-
-        line("Question: %s", $question);
-    $userAnswer = prompt('Your answer'); // игрок дает ответ
+        $question = sprintf("%d %d", $num1, $num2); // формируем вопрос игры
+        $questions[] = $question;
  
     $gcd = gmp_gcd($num1, $num2);
     $correctAnswer = gmp_strval($gcd); // правильный ответ
   
-    if ($userAnswer === $correctAnswer) {
-        line('Correct!');                   //игрок дал правильный ответ
-        $i++;                               // счетчик увеличился на 1
-    } else {
-        echo "'{$userAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.\nLet's try again, {$name}!\n";
-        $i = 5;                      //игрок дал неверный ответ. Счетчик равен 5. Выход из цикла.
-    } 
+    $answers[] = $correctAnswer; // кладем ответ в массив
     }
-
-    if ($i === 3) {
-        echo "Congratulations, {$name}!\n"; //если счетчик равен 3, т.е. 3 правильных ответа подряд - поздравляем
-    }
+engine($description, $questions, $answers);
 }
