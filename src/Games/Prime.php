@@ -4,20 +4,18 @@ namespace BrainGames\Games\Prime;
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Games\Engine\engine;
 
 function runPrime()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line('Answer "yes" if given number is prime. Otherwise answer "no".');
+    $description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-    $i = 0;
-    while ($i <= 2) {
-
+    $questions = []; // пустой массив для вопросов
+    $answers = [];  //пустой массив для ответов
+    
+    for ($i = 0; $i < 3; $i++) {
         $number = rand(1, 100); // генерируем случайное число от 1 до 100
-    line("Question: %d", $number);
-    $userAnswer = prompt('Your answer'); // игрок дает ответ
+        $questions[] = $number; // кладем в массив
 
     $prime = gmp_prob_prime($number);   /* Если функция возвращает 0, число точно не является простым. 
     *Если возвращает 1, то num "возможно" простое. Но у нас маленький диапазон от 1 до 100, резульат 1 исключен.
@@ -29,16 +27,8 @@ function runPrime()
         $correctAnswer = "no";
     }
 
-    if ($userAnswer === $correctAnswer) {
-        line('Correct!');                   //игрок дал правильный ответ
-        $i++;                               // счетчик увеличился на 1
-    } else {
-        echo "'{$userAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.\nLet's try again, {$name}!\n";
-        $i = 5;                      //игрок дал неверный ответ. Счетчик равен 5. Выход из цикла.
-    } 
+    $answers[] = $correctAnswer; // кладем ответ в массив
     }
 
-    if ($i === 3) {
-        echo "Congratulations, {$name}!\n"; //если счетчик равен 3, т.е. 3 правильных ответа подряд - поздравляем
-    }
+    engine($description, $questions, $answers); //передаем в функцию движка
 }
