@@ -15,8 +15,8 @@ function runGcd()
     $i = 0;
     while ($i <= 2) {
 
-        $num1 = (string)(rand(1, 25)); // генерируем первое случайное число от 1 до 50
-        $num2 = (string)(rand(1, 25)); // генерируем второе случайное число от 1 до 50
+        $num1 = (string)(rand(1, 25)); // генерируем первое случайное число от 1 до 25
+        $num2 = (string)(rand(1, 25)); // генерируем второе случайное число от 1 до 25
         
         $question = "{$num1} {$num2}"; // формируем вопрос игры
 
@@ -24,7 +24,7 @@ function runGcd()
     $userAnswer = prompt('Your answer'); // игрок дает ответ
  
     $gcd = gmp_gcd($num1, $num2);
-    $correctAnswer = gmp_strval($gcd);
+    $correctAnswer = gmp_strval($gcd); // правильный ответ
   
     if ($userAnswer === $correctAnswer) {
         line('Correct!');                   //игрок дал правильный ответ
