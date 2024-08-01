@@ -17,13 +17,19 @@ function runPrime()
         $number = rand(1, 100); // генерируем случайное число от 1 до 100
         $questions[] = $number; // кладем в массив
 
-        $prime = gmp_prob_prime($number);/* Если функция возвращает 0, число точно не является простым. 
-        *Если возвращает 1, то num "возможно" простое. Но у нас маленький диапазон от 1 до 100, резульат 1 исключен.
-        *Если возвращает 2, то num точно простое. */
-
-        if ($prime === 2) {             // правильный ответ
+        $prime = true;  
+        if ($number === 1 || $number === 2) {//если случайное число 1 или 2, то оно простое
+            $prime = true;
+        }
+        for ($x = 2; $x < $number; $x++) {
+            if ($number % $x === 0) {
+                $prime = false;
+            }
+        }
+        
+        if ($prime === true) {             // правильный ответ
             $correctAnswer = "yes";
-        } elseif ($prime === 0) {
+        } else {
             $correctAnswer = "no";
         }
 
