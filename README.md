@@ -6,7 +6,7 @@
 
 
 First php-project on Hexlet.
-There are 5 games: Brain-even, Brain-calc, Brain-gcd, Brain-progression, Brain-prime.
+There are 5 games: Brain-even, Brain-calc, Brain-gcd, Brain-progression, Brain-prime.\
 Try your mind! Answer correctly three times in every game and win Brain Games!
 
 ## Prerequisites
