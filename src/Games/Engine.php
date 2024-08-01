@@ -27,7 +27,7 @@ function engine($description, $questions, $answers)
         } else {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $answer);
             line("Let's try again, %s!", $name);
-            break;//игрок ответил неправильно. Выход из цикла.        
+            break;//игрок ответил неправильно. Выход из цикла.
         }
     }
 
