@@ -20,9 +20,22 @@ function runGcd()
         $question = sprintf("%d %d", $num1, $num2); // формируем вопрос игры
         $questions[] = $question;
 
-        $gcd = gmp_gcd($num1, $num2);
-        $correctAnswer = gmp_strval($gcd); // правильный ответ
+        $divisors1 = [];//пустой массив для делителей первого числа
+        $divisors2 = [];//пустой массивв для делителей второго числа
 
+        for ($x = 1; $x <= $num1; $x++) {//находим все делители первого числа, складываем в массив
+            if ($num1 % $x === 0) {
+                $divisors1[] = $x;
+            }
+        }
+
+        for ($x = 1; $x <= $num2; $x++) {//находим все делители второго числа, складываем в массив
+            if ($num2 % $x === 0) {
+                $divisors2[] = $x;
+            }
+        }
+        $commonDivisors = array_intersect($divisors1, $divisors2);//находим общие делители для двух чисел
+        $correctAnswer = (string)(array_pop($commonDivisors));//НОД будет последним числом в массиве общих делителей
         $answers[] = $correctAnswer; // кладем ответ в массив
     }
     engine($description, $questions, $answers);
