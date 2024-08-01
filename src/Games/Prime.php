@@ -18,12 +18,15 @@ function runPrime()
         $questions[] = $number; // кладем в массив
 
         $prime = true;  
-        if ($number === 1 || $number === 2) {//если случайное число 1 или 2, то оно простое
+        if ($number === 1) {// если случайное число 1, то оно не является простым
+            $prime = false;
+        }
+        if ($number === 2) {//если случайное число 2, то оно простое
             $prime = true;
         }
-        for ($x = 2; $x < $number; $x++) {
-            if ($number % $x === 0) {
-                $prime = false;
+        for ($x = 2; $x < $number; $x++) {// если число 3 и более,
+            if ($number % $x === 0) {//то проверяем имеет ли он делители без остатка
+                $prime = false;//если да, то не является простым
             }
         }
         
