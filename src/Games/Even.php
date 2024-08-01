@@ -8,7 +8,7 @@ use function BrainGames\Games\Engine\engine;
 
 function runEven()
 {
-    $description = 'Answer "yes" if the number is even, otherwise answer "no"';
+    $description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
     $questions = []; // пустой массив для вопросов
     $answers = [];  //пустой массив для ответов
