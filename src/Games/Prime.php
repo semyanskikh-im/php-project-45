@@ -17,7 +17,7 @@ function runPrime()
         $number = rand(1, 100); // генерируем случайное число от 1 до 100
         $questions[] = $number; // кладем в массив
 
-        $prime = true;  
+        $prime = true;
         if ($number === 1) {// если случайное число 1, то оно не является простым
             $prime = false;
         }
@@ -29,7 +29,7 @@ function runPrime()
                 $prime = false;//если да, то не является простым
             }
         }
-        
+
         if ($prime === true) {             // правильный ответ
             $correctAnswer = "yes";
         } else {

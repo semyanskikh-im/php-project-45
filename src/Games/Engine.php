@@ -22,11 +22,12 @@ function engine($description, $questions, $answers)
         $userAnswer = prompt('Your answer');  //игрок дает ответ
 
         if ($userAnswer === $answer) {
-            line('Correct!');  // игрок ответил правильно. 
+            line('Correct!');// игрок ответил правильно.
             $i++;
         } else {
-            line("'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, %s!", $userAnswer, $answer, $name);
-            break;  //игрок ответил неправильно. Выход из цикла.                  
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $answer);
+            line("Let's try again, %s!", $name);
+            break;//игрок ответил неправильно. Выход из цикла.        
         }
     }
 
