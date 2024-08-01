@@ -29,7 +29,7 @@ function runProgression()
         $answers[] = $correctAnswer; // кладем ответ в массив
         $progression[$key] = "..";        // заменяем значение элемента на ..
 
-        $question = implode(", ", $progression);  // формируем вопрос игры
+        $question = implode(" ", $progression);  // формируем вопрос игры
 
         $questions[] = $question; // кладем вопрос в виде последовательности в массив
     }
