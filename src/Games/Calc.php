@@ -8,9 +8,9 @@ use function BrainGames\Games\Engine\engine;
 
 function runCalc()
 {
-    
+
     $description = 'What is the result of the expression?';
-    
+
     $questions = [];
     $answers = [];
 
@@ -20,22 +20,22 @@ function runCalc()
         $symbols = ['+', '-', '*']; //массив из возможных операций
         $key = array_rand($symbols); // генерируем случайный ключ из массива операций
         $symbol = $symbols[$key]; // получаем значение по этому ключу
-        
+
         $question = sprintf("%d %s %d", $num1, $symbol, $num2); // формируем вопрос игры
         $questions[] = $question;
-        
-    switch ($symbol) {
-        case '+':
-            $correctAnswer = (string)($num1 + $num2);    //  правильный ответ в завиимости от выпавшего знака
-            break;
-        case '-':
-            $correctAnswer = (string)($num1 - $num2);
-            break;
-        case '*':
-            $correctAnswer = (string)($num1 * $num2);
-            break;
+
+        switch ($symbol) {
+            case '+':
+                $correctAnswer = (string)($num1 + $num2); // правильный ответ в завиимости от выпавшего знака
+                break;
+            case '-':
+                $correctAnswer = (string)($num1 - $num2);
+                break;
+            case '*':
+                $correctAnswer = (string)($num1 * $num2);
+                break;
+        }
+        $answers[] = $correctAnswer;
     }
-    $answers[] = $correctAnswer;
-}
-engine($description, $questions, $answers);
+    engine($description, $questions, $answers);
 }

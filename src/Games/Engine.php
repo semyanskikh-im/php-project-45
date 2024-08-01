@@ -21,18 +21,16 @@ function engine($description, $questions, $answers)
 
         $userAnswer = prompt('Your answer');  //игрок дает ответ
 
-        if ($userAnswer === $answer) {     
-            line('Correct!');  //игрок ответил правильно. 
+        if ($userAnswer === $answer) {
+            line('Correct!');  // игрок ответил правильно. 
             $i++;
         } else {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, %s!", $userAnswer, $answer, $name);
-            break;    //игрок ответил неправильно. Выход из цикла.                  
+            break;  //игрок ответил неправильно. Выход из цикла.                  
         }
-
     }
-    
+
     if ($i === 3) {
         line("Congratulations, %s!\n", $name); //игрок ответил 3 раза правильно, поздравляем!
     }
-
 }
