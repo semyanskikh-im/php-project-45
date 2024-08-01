@@ -26,11 +26,11 @@ function engine($description, $questions, $answers)
             $i++;
         } else {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, %s!", $userAnswer, $answer, $name);
-            $i = 5;    //игрок ответил неправильно. Пусть $i = 5, чтобы выйти из цикла.                  
+            break;    //игрок ответил неправильно. Выход из цикла.                  
         }
 
     }
-
+    
     if ($i === 3) {
         line("Congratulations, %s!\n", $name); //игрок ответил 3 раза правильно, поздравляем!
     }
