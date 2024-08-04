@@ -2,9 +2,7 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Games\Engine\engine;
+use function BrainGames\Engine\runEngine;
 
 function runGcd()
 {
@@ -38,5 +36,5 @@ function runGcd()
         $correctAnswer = (string)(array_pop($commonDivisors));//НОД будет последним числом в массиве общих делителей
         $answers[] = $correctAnswer; // кладем ответ в массив
     }
-    engine($description, $questions, $answers);
+    runEngine($description, $questions, $answers);
 }

@@ -2,9 +2,7 @@
 
 namespace BrainGames\Games\Progression;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Games\Engine\engine;
+use function BrainGames\Engine\runEngine;
 
 function runProgression()
 {
@@ -32,5 +30,5 @@ function runProgression()
         $questions[] = $question; // кладем вопрос в виде последовательности в массив
     }
 
-    engine($description, $questions, $answers); //передаем в функцию движка
+    runEngine($description, $questions, $answers); //передаем в функцию движка
 }

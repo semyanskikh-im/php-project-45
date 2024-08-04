@@ -2,9 +2,7 @@
 
 namespace BrainGames\Games\Prime;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Games\Engine\engine;
+use function BrainGames\Engine\runEngine;
 
 function runPrime()
 {
@@ -30,7 +28,7 @@ function runPrime()
             }
         }
 
-        if ($prime === true) {             // правильный ответ
+        if ($prime) {             // правильный ответ
             $correctAnswer = "yes";
         } else {
             $correctAnswer = "no";
@@ -39,5 +37,5 @@ function runPrime()
         $answers[] = $correctAnswer; // кладем ответ в массив
     }
 
-    engine($description, $questions, $answers); //передаем в функцию движка
+    runEngine($description, $questions, $answers); //передаем в функцию движка
 }

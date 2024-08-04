@@ -2,9 +2,7 @@
 
 namespace BrainGames\Games\Even;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Games\Engine\engine;
+use function BrainGames\Engine\runEngine;
 
 function runEven()
 {
@@ -24,5 +22,5 @@ function runEven()
         $answers[] = $correctAnswer; // кладем ответ в массив
     }
 
-    engine($description, $questions, $answers); //передаем в функцию движка
+    runEngine($description, $questions, $answers); //передаем в функцию движка
 }

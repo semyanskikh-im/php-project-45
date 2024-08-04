@@ -2,9 +2,7 @@
 
 namespace BrainGames\Games\Calc;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\Games\Engine\engine;
+use function BrainGames\Engine\runEngine;
 
 function runCalc()
 {
@@ -34,8 +32,10 @@ function runCalc()
             case '*':
                 $correctAnswer = (string)($num1 * $num2);
                 break;
+            default:
+                return null;
         }
         $answers[] = $correctAnswer;
     }
-    engine($description, $questions, $answers);
+    runEngine($description, $questions, $answers);
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace BrainGames\Games\Engine;
+namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
-function engine(string $description, array $questions, array $answers)
+function runEngine(string $description, array $questions, array $answers)
 {
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
@@ -13,7 +13,8 @@ function engine(string $description, array $questions, array $answers)
     line("%s", $description);  //выводим описание игры
 
     $i = 0;
-    while ($i < 3) {
+    $gameRounds = 3;
+    while ($i < $gameRounds) {
         $question = $questions[$i];   //по очереди извлекаем вопросы и ответы
         $answer = $answers[$i];
 
@@ -27,11 +28,9 @@ function engine(string $description, array $questions, array $answers)
         } else {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $answer);
             line("Let's try again, %s!", $name);
-            break;//игрок ответил неправильно. Выход из цикла.
+            return;
         }
     }
 
-    if ($i === 3) {
-        line("Congratulations, %s!\n", $name); //игрок ответил 3 раза правильно, поздравляем!
-    }
+    line("Congratulations, %s!\n", $name); //игрок ответил 3 раза правильно, поздравляем!
 }
