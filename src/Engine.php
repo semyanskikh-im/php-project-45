@@ -13,8 +13,8 @@ function runEngine(string $description, array $questions, array $answers)
     line("%s", $description);  //выводим описание игры
 
     $i = 0;
-    $gameRounds = 3;
-    while ($i < $gameRounds) {
+    $gameRoundsCount = 3;
+    while ($i < $gameRoundsCount) {
         $question = $questions[$i];   //по очереди извлекаем вопросы и ответы
         $answer = $answers[$i];
 
@@ -22,13 +22,15 @@ function runEngine(string $description, array $questions, array $answers)
 
         $userAnswer = prompt('Your answer');  //игрок дает ответ
 
-        if ($userAnswer === $answer) {
-            line('Correct!');// игрок ответил правильно.
-            $i++;
-        } else {
+        if ($userAnswer !== $answer) {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $answer);
             line("Let's try again, %s!", $name);
             return;
+        }
+
+        if ($userAnswer === $answer) {
+            line('Correct!');// игрок ответил правильно.
+            $i++;
         }
     }
 
