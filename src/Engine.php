@@ -28,10 +28,8 @@ function runEngine(string $description, array $questions, array $answers)
             return;
         }
 
-        if ($userAnswer === $answer) {
-            line('Correct!');// игрок ответил правильно.
-            $i++;
-        }
+        line('Correct!');// игрок ответил правильно.
+        $i++;
     }
 
     line("Congratulations, %s!\n", $name); //игрок ответил 3 раза правильно, поздравляем!

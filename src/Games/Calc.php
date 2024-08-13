@@ -4,15 +4,16 @@ namespace BrainGames\Games\Calc;
 
 use function BrainGames\Engine\runEngine;
 
-function runCalc()
+function run()
 {
 
     $description = 'What is the result of the expression?';
 
     $questions = [];
     $answers = [];
+    $gameRoundsCount = 3;
 
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < $gameRoundsCount; $i++) {
         $num1 = rand(1, 25); // генерируем первое случайное число от 1 до 25
         $num2 = rand(1, 25); // генерируем второе случайное число от 1 до 25
         $symbols = ['+', '-', '*']; //массив из возможных операций
@@ -33,7 +34,7 @@ function runCalc()
                 $correctAnswer = (string)($num1 * $num2);
                 break;
             default:
-                return null;
+                throw new Error('Unknown state!');
         }
         $answers[] = $correctAnswer;
     }

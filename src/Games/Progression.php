@@ -4,22 +4,30 @@ namespace BrainGames\Games\Progression;
 
 use function BrainGames\Engine\runEngine;
 
-function runProgression()
+function run()
 {
     $description = 'What number is missing in the progression?';
 
-    $questions = []; // пустой массив для вопросов
-    $answers = [];  //пустой массив для ответов
-    for ($i = 0; $i < 3; $i++) {
+    function generateProgression(): array // формирует последовательность
+    {
         $step = rand(2, 12);  // рандомный шаг прогрессии от 2 до 12
         $progression = [];  // пустой массив, который будет заполняться числами прогрессии
         $num = 0;
+        $progressionLength = 10; // в прогрессии 10 чисел
 
-        for ($j = 0; count($progression) < 10; $j++) {          // $j - счетчик, т.к. $i уже есть выше
-            $num = $num + $step;      //пошагово формируем последовательность
+        for ($i = 0; count($progression) < $progressionLength; $i++) {
+            $num += $step;      //пошагово формируем последовательность
             $progression[] = $num;// добавляем элементы последовательности по одному в массив
         }
+        return $progression;
+    }
 
+    $questions = []; // пустой массив для вопросов
+    $answers = [];  //пустой массив для ответов
+    $gameRoundsCount = 3;
+
+    for ($i = 0; $i < $gameRoundsCount; $i++) {
+        $progression = generateProgression();
         $key = array_rand($progression);  //получаем случайный ключ из массива
         $correctAnswer = (string)($progression[$key]);    // правильный ответ - значение по этому ключу
         $answers[] = $correctAnswer; // кладем ответ в массив
