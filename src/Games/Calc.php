@@ -34,7 +34,7 @@ function run()
                 $correctAnswer = (string)($num1 * $num2);
                 break;
             default:
-                throw new Error('Unknown state!');
+                throw new \Exception('Unknown state!');
         }
         $answers[] = $correctAnswer;
     }
