@@ -5,6 +5,8 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
+const GAME_ROUNDS_COUNT = 3;
+
 function runEngine(string $description, array $questions, array $answers)
 {
     line('Welcome to the Brain Game!');
@@ -13,8 +15,8 @@ function runEngine(string $description, array $questions, array $answers)
     line("%s", $description);  //выводим описание игры
 
     $i = 0;
-    $gameRoundsCount = 3;
-    while ($i < $gameRoundsCount) {
+
+    while ($i < GAME_ROUNDS_COUNT) {
         $question = $questions[$i];   //по очереди извлекаем вопросы и ответы
         $answer = $answers[$i];
 

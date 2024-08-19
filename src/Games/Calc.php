@@ -4,6 +4,8 @@ namespace BrainGames\Games\Calc;
 
 use function BrainGames\Engine\runEngine;
 
+use const BrainGames\Engine\GAME_ROUNDS_COUNT;
+
 function run()
 {
 
@@ -11,9 +13,8 @@ function run()
 
     $questions = [];
     $answers = [];
-    $gameRoundsCount = 3;
 
-    for ($i = 0; $i < $gameRoundsCount; $i++) {
+    for ($i = 0; $i < GAME_ROUNDS_COUNT; $i++) {
         $num1 = rand(1, 25); // генерируем первое случайное число от 1 до 25
         $num2 = rand(1, 25); // генерируем второе случайное число от 1 до 25
         $symbols = ['+', '-', '*']; //массив из возможных операций

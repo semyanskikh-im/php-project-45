@@ -4,6 +4,8 @@ namespace BrainGames\Games\Progression;
 
 use function BrainGames\Engine\runEngine;
 
+use const BrainGames\Engine\GAME_ROUNDS_COUNT;
+
 function generateProgression(): array // формирует последовательность
 {
     $step = rand(2, 12);  // рандомный шаг прогрессии от 2 до 12
@@ -11,7 +13,7 @@ function generateProgression(): array // формирует последоват
     $num = 0;
     $progressionLength = 10; // в прогрессии 10 чисел
 
-    for ($i = 0; count($progression) < $progressionLength; $i++) {
+    for ($i = 0; $i < $progressionLength; $i++) {
         $num += $step;      //пошагово формируем последовательность
         $progression[] = $num;// добавляем элементы последовательности по одному в массив
     }
@@ -24,9 +26,8 @@ function run()
 
     $questions = []; // пустой массив для вопросов
     $answers = [];  //пустой массив для ответов
-    $gameRoundsCount = 3;
 
-    for ($i = 0; $i < $gameRoundsCount; $i++) {
+    for ($i = 0; $i < GAME_ROUNDS_COUNT; $i++) {
         $progression = generateProgression();
         $key = array_rand($progression);  //получаем случайный ключ из массива
         $correctAnswer = (string)($progression[$key]);    // правильный ответ - значение по этому ключу
