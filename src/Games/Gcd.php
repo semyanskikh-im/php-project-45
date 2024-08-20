@@ -6,12 +6,13 @@ use function BrainGames\Engine\runEngine;
 
 use const BrainGames\Engine\GAME_ROUNDS_COUNT;
 
-function findGcd(int $number1, int $number2): string// функция возвращает НОД
+function findGcd(int $num1, int $num2)// функция возвращает НОД
 {
     $divisors = [];//пустой массив для общих делителей
+    $minNum = min($num1, $num2);//находим минимальное число
 
-    for ($i = 1; $i <= $number1; $i++) {//находим все общие делители, складываем в массив
-        if ($number1 % $i === 0 && $number2 % $i === 0) {
+    for ($i = 1; $i <= $minNum; $i++) {//находим все общие делители, складываем в массив
+        if ($num1 % $i === 0 && $num2 % $i === 0) {
             $divisors[] = $i;
         }
     }
@@ -31,7 +32,7 @@ function run()
 
         $question = sprintf("%d %d", $num1, $num2); // формируем вопрос игры
         $questions[] = $question;
-        $correctAnswer = findGcd($num1, $num2);
+        $correctAnswer = (string) findGcd($num1, $num2);
         $answers[] = $correctAnswer; // кладем ответ в массив
     }
     runEngine($description, $questions, $answers);
